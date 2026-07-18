@@ -1,80 +1,73 @@
-import type { CollectionConfig } from "payload";
+import type { CollectionConfig } from 'payload'
 
 export const Enrollments: CollectionConfig = {
-  slug: "enrollments",
+  slug: 'enrollments',
   admin: {
-    useAsTitle: "id",
-    defaultColumns: [
-      "student",
-      "course",
-      "progress",
-      "completed",
-      "lastLesson",
-      "updatedAt",
-    ],
+    useAsTitle: 'id',
+    defaultColumns: ['student', 'course', 'progress', 'completed', 'lastLesson', 'updatedAt'],
   },
   fields: [
     {
-      name: "student",
-      type: "relationship",
-      relationTo: "users",
+      name: 'student',
+      type: 'relationship',
+      relationTo: 'users',
       required: true,
       index: true,
       filterOptions: {
         role: {
-          equals: "STUDENT",
+          equals: 'STUDENT',
         },
       },
     },
     {
-      name: "course",
-      type: "relationship",
-      relationTo: "courses",
+      name: 'course',
+      type: 'relationship',
+      relationTo: 'courses',
       required: true,
       index: true,
     },
     {
-      name: "order",
-      type: "relationship",
-      relationTo: "orders",
+      name: 'order',
+      type: 'relationship',
+      relationTo: 'orders',
       admin: {
-        description: "Source order (optional for free / manual enrollments)",
+        description: 'Source order (optional for free / manual enrollments)',
       },
     },
     {
-      name: "progress",
-      type: "number",
+      name: 'progress',
+      type: 'number',
       required: true,
       defaultValue: 0,
       min: 0,
       max: 100,
       admin: {
-        description: "Completion percentage (0–100)",
+        description: 'Completion percentage (0–100)',
       },
     },
     {
-      name: "completed",
-      type: "checkbox",
+      name: 'completed',
+      type: 'checkbox',
       defaultValue: false,
       index: true,
     },
     {
-      name: "completedAt",
-      type: "date",
+      name: 'completedAt',
+      type: 'date',
       admin: {
         date: {
-          pickerAppearance: "dayAndTime",
+          pickerAppearance: 'dayAndTime',
         },
         condition: (_data, siblingData) => Boolean(siblingData?.completed),
       },
     },
     {
-      name: "lastLesson",
-      type: "relationship",
-      relationTo: "lessons",
+      name: 'lastLesson',
+      type: 'relationship',
+      relationTo: 'lessons',
       admin: {
-        description: "Last lesson the student accessed (resume playback)",
+        description: 'Last lesson the student accessed (resume playback)',
       },
     },
   ],
-};
+}

@@ -25,10 +25,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-primary/15 bg-background/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5">
-        <Link
-          href="/"
-          className="font-heading text-xl font-semibold tracking-tight text-primary"
-        >
+        <Link href="/" className="font-heading text-xl font-semibold tracking-tight text-primary">
           PTechRoom <span className="text-primary/70">Labs</span>
         </Link>
 
@@ -42,23 +39,15 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/admin"
-            className={cn(buttonVariants({ size: 'sm' }), 'ml-2')}
-          >
-            Get started
+          <Link href="/login" className={cn(buttonVariants({ size: 'sm' }), 'ml-2')}>
+            Sign in
           </Link>
         </nav>
 
         <Sheet>
           <SheetTrigger
             render={
-              <Button
-                variant="outline"
-                size="icon"
-                className="md:hidden"
-                aria-label="Open menu"
-              />
+              <Button variant="outline" size="icon" className="md:hidden" aria-label="Open menu" />
             }
           >
             <MenuIcon />
@@ -77,10 +66,7 @@ export function Navbar() {
                   render={
                     <Link
                       href={link.href}
-                      className={cn(
-                        buttonVariants({ variant: 'ghost' }),
-                        'w-full justify-start',
-                      )}
+                      className={cn(buttonVariants({ variant: 'ghost' }), 'w-full justify-start')}
                     />
                   }
                 >
@@ -88,14 +74,9 @@ export function Navbar() {
                 </SheetClose>
               ))}
               <SheetClose
-                render={
-                  <Link
-                    href="/admin"
-                    className={cn(buttonVariants(), 'mt-2 w-full')}
-                  />
-                }
+                render={<Link href="/login" className={cn(buttonVariants(), 'mt-2 w-full')} />}
               >
-                Get started
+                Sign in
               </SheetClose>
             </nav>
           </SheetContent>
