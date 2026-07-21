@@ -59,776 +59,777 @@ export type SupportedTimezones =
   | 'Pacific/Guam'
   | 'Pacific/Noumea'
   | 'Pacific/Auckland'
-  | 'Pacific/Fiji';
+  | 'Pacific/Fiji'
 
 export interface Config {
   auth: {
-    users: UserAuthOperations;
-  };
-  blocks: {};
+    users: UserAuthOperations
+  }
+  blocks: {}
   collections: {
-    users: User;
-    media: Media;
-    categories: Category;
-    courses: Course;
-    sections: Section;
-    lessons: Lesson;
-    blogs: Blog;
-    pdfs: Pdf;
-    orders: Order;
-    enrollments: Enrollment;
-    reviews: Review;
-    coupons: Coupon;
-    'payload-kv': PayloadKv;
-    'payload-locked-documents': PayloadLockedDocument;
-    'payload-preferences': PayloadPreference;
-    'payload-migrations': PayloadMigration;
-  };
-  collectionsJoins: {};
+    users: User
+    media: Media
+    categories: Category
+    courses: Course
+    sections: Section
+    lessons: Lesson
+    blogs: Blog
+    pdfs: Pdf
+    orders: Order
+    enrollments: Enrollment
+    reviews: Review
+    coupons: Coupon
+    'payload-kv': PayloadKv
+    'payload-locked-documents': PayloadLockedDocument
+    'payload-preferences': PayloadPreference
+    'payload-migrations': PayloadMigration
+  }
+  collectionsJoins: {}
   collectionsSelect: {
-    users: UsersSelect<false> | UsersSelect<true>;
-    media: MediaSelect<false> | MediaSelect<true>;
-    categories: CategoriesSelect<false> | CategoriesSelect<true>;
-    courses: CoursesSelect<false> | CoursesSelect<true>;
-    sections: SectionsSelect<false> | SectionsSelect<true>;
-    lessons: LessonsSelect<false> | LessonsSelect<true>;
-    blogs: BlogsSelect<false> | BlogsSelect<true>;
-    pdfs: PdfsSelect<false> | PdfsSelect<true>;
-    orders: OrdersSelect<false> | OrdersSelect<true>;
-    enrollments: EnrollmentsSelect<false> | EnrollmentsSelect<true>;
-    reviews: ReviewsSelect<false> | ReviewsSelect<true>;
-    coupons: CouponsSelect<false> | CouponsSelect<true>;
-    'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
-    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
-    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
-    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
-  };
+    users: UsersSelect<false> | UsersSelect<true>
+    media: MediaSelect<false> | MediaSelect<true>
+    categories: CategoriesSelect<false> | CategoriesSelect<true>
+    courses: CoursesSelect<false> | CoursesSelect<true>
+    sections: SectionsSelect<false> | SectionsSelect<true>
+    lessons: LessonsSelect<false> | LessonsSelect<true>
+    blogs: BlogsSelect<false> | BlogsSelect<true>
+    pdfs: PdfsSelect<false> | PdfsSelect<true>
+    orders: OrdersSelect<false> | OrdersSelect<true>
+    enrollments: EnrollmentsSelect<false> | EnrollmentsSelect<true>
+    reviews: ReviewsSelect<false> | ReviewsSelect<true>
+    coupons: CouponsSelect<false> | CouponsSelect<true>
+    'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>
+    'payload-locked-documents':
+      PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>
+    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>
+    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>
+  }
   db: {
-    defaultIDType: number;
-  };
-  fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
-  locale: null;
+    defaultIDType: number
+  }
+  fallbackLocale: null
+  globals: {}
+  globalsSelect: {}
+  locale: null
   widgets: {
-    collections: CollectionsWidget;
-  };
-  user: User;
+    collections: CollectionsWidget
+  }
+  user: User
   jobs: {
-    tasks: unknown;
-    workflows: unknown;
-  };
+    tasks: unknown
+    workflows: unknown
+  }
 }
 export interface UserAuthOperations {
   forgotPassword: {
-    email: string;
-    password: string;
-  };
+    email: string
+    password: string
+  }
   login: {
-    email: string;
-    password: string;
-  };
+    email: string
+    password: string
+  }
   registerFirstUser: {
-    email: string;
-    password: string;
-  };
+    email: string
+    password: string
+  }
   unlock: {
-    email: string;
-    password: string;
-  };
+    email: string
+    password: string
+  }
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
-  id: number;
-  name?: string | null;
-  role?: ('ADMIN' | 'TEACHER' | 'STUDENT') | null;
-  phone?: string | null;
-  avatar?: (number | null) | Media;
-  bio?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
+  id: number
+  name?: string | null
+  role?: ('ADMIN' | 'TEACHER' | 'STUDENT') | null
+  phone?: string | null
+  avatar?: (number | null) | Media
+  bio?: string | null
+  updatedAt: string
+  createdAt: string
+  email: string
+  resetPasswordToken?: string | null
+  resetPasswordExpiration?: string | null
+  salt?: string | null
+  hash?: string | null
+  loginAttempts?: number | null
+  lockUntil?: string | null
   sessions?:
     | {
-        id: string;
-        createdAt?: string | null;
-        expiresAt: string;
+        id: string
+        createdAt?: string | null
+        expiresAt: string
       }[]
-    | null;
-  password?: string | null;
-  collection: 'users';
+    | null
+  password?: string | null
+  collection: 'users'
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
-  id: number;
-  alt: string;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
+  id: number
+  alt: string
+  updatedAt: string
+  createdAt: string
+  url?: string | null
+  thumbnailURL?: string | null
+  filename?: string | null
+  mimeType?: string | null
+  filesize?: number | null
+  width?: number | null
+  height?: number | null
+  focalX?: number | null
+  focalY?: number | null
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
 export interface Category {
-  id: number;
-  name: string;
-  slug: string;
-  description?: string | null;
-  icon?: (number | null) | Media;
-  banner?: (number | null) | Media;
-  isActive?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
+  id: number
+  name: string
+  slug: string
+  description?: string | null
+  icon?: (number | null) | Media
+  banner?: (number | null) | Media
+  isActive?: boolean | null
+  updatedAt: string
+  createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "courses".
  */
 export interface Course {
-  id: number;
-  title: string;
-  slug: string;
-  shortDescription: string;
+  id: number
+  title: string
+  slug: string
+  shortDescription: string
   description: {
     root: {
-      type: string;
+      type: string
       children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  thumbnail: number | Media;
-  price: number;
-  status?: ('draft' | 'published') | null;
-  teacher: number | User;
-  category?: (number | Category)[] | null;
-  updatedAt: string;
-  createdAt: string;
+        type: any
+        version: number
+        [k: string]: unknown
+      }[]
+      direction: ('ltr' | 'rtl') | null
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
+      indent: number
+      version: number
+    }
+    [k: string]: unknown
+  }
+  thumbnail: number | Media
+  price: number
+  status?: ('draft' | 'published') | null
+  teacher: number | User
+  category?: (number | Category)[] | null
+  updatedAt: string
+  createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "sections".
  */
 export interface Section {
-  id: number;
-  title: string;
+  id: number
+  title: string
   /**
    * The course this section belongs to
    */
-  course: number | Course;
+  course: number | Course
   /**
    * Display order within the course (ascending)
    */
-  order: number;
-  updatedAt: string;
-  createdAt: string;
+  order: number
+  updatedAt: string
+  createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "lessons".
  */
 export interface Lesson {
-  id: number;
-  title: string;
-  slug: string;
+  id: number
+  title: string
+  slug: string
   /**
    * Parent section (section already links to a course)
    */
-  section: number | Section;
+  section: number | Section
   description?: {
     root: {
-      type: string;
+      type: string
       children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  video?: (number | null) | Media;
-  attachments?: (number | Media)[] | null;
+        type: any
+        version: number
+        [k: string]: unknown
+      }[]
+      direction: ('ltr' | 'rtl') | null
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
+      indent: number
+      version: number
+    }
+    [k: string]: unknown
+  } | null
+  video?: (number | null) | Media
+  attachments?: (number | Media)[] | null
   /**
    * Lesson duration in minutes
    */
-  duration?: number | null;
+  duration?: number | null
   /**
    * Allow free preview without enrollment
    */
-  isPreview?: boolean | null;
+  isPreview?: boolean | null
   /**
    * Display order within the section (ascending)
    */
-  order: number;
-  updatedAt: string;
-  createdAt: string;
+  order: number
+  updatedAt: string
+  createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "blogs".
  */
 export interface Blog {
-  id: number;
-  title: string;
-  slug: string;
+  id: number
+  title: string
+  slug: string
   /**
    * Short summary shown in blog listings (max 300 chars)
    */
-  excerpt: string;
+  excerpt: string
   content: {
     root: {
-      type: string;
+      type: string
       children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  coverImage: number | Media;
-  author: number | User;
-  categories?: (number | Category)[] | null;
-  publishedAt?: string | null;
-  status: 'draft' | 'published';
-  updatedAt: string;
-  createdAt: string;
+        type: any
+        version: number
+        [k: string]: unknown
+      }[]
+      direction: ('ltr' | 'rtl') | null
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
+      indent: number
+      version: number
+    }
+    [k: string]: unknown
+  }
+  coverImage: number | Media
+  author: number | User
+  categories?: (number | Category)[] | null
+  publishedAt?: string | null
+  status: 'draft' | 'published'
+  updatedAt: string
+  createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pdfs".
  */
 export interface Pdf {
-  id: number;
-  title: string;
-  slug: string;
+  id: number
+  title: string
+  slug: string
   description: {
     root: {
-      type: string;
+      type: string
       children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  coverImage: number | Media;
+        type: any
+        version: number
+        [k: string]: unknown
+      }[]
+      direction: ('ltr' | 'rtl') | null
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
+      indent: number
+      version: number
+    }
+    [k: string]: unknown
+  }
+  coverImage: number | Media
   /**
    * The downloadable PDF file
    */
-  pdfFile: number | Media;
-  teacher: number | User;
-  categories?: (number | Category)[] | null;
-  price: number;
-  status: 'draft' | 'published';
-  updatedAt: string;
-  createdAt: string;
+  pdfFile: number | Media
+  teacher: number | User
+  categories?: (number | Category)[] | null
+  price: number
+  status: 'draft' | 'published'
+  updatedAt: string
+  createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "orders".
  */
 export interface Order {
-  id: number;
-  student: number | User;
+  id: number
+  student: number | User
   items: {
     /**
      * Course or PDF purchased in this order
      */
     product:
       | {
-          relationTo: 'courses';
-          value: number | Course;
+          relationTo: 'courses'
+          value: number | Course
         }
       | {
-          relationTo: 'pdfs';
-          value: number | Pdf;
-        };
+          relationTo: 'pdfs'
+          value: number | Pdf
+        }
     /**
      * Unit price at time of purchase (snapshot)
      */
-    price: number;
-    id?: string | null;
-  }[];
-  totalAmount: number;
-  paymentMethod: 'razorpay' | 'stripe';
+    price: number
+    id?: string | null
+  }[]
+  totalAmount: number
+  paymentMethod: 'razorpay' | 'stripe'
   /**
    * Gateway payment / transaction ID
    */
-  paymentId?: string | null;
-  paymentStatus: 'pending' | 'paid' | 'failed' | 'refunded';
-  orderStatus: 'pending' | 'completed' | 'cancelled' | 'refunded';
-  purchasedAt?: string | null;
-  updatedAt: string;
-  createdAt: string;
+  paymentId?: string | null
+  paymentStatus: 'pending' | 'paid' | 'failed' | 'refunded'
+  orderStatus: 'pending' | 'completed' | 'cancelled' | 'refunded'
+  purchasedAt?: string | null
+  updatedAt: string
+  createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "enrollments".
  */
 export interface Enrollment {
-  id: number;
-  student: number | User;
-  course: number | Course;
+  id: number
+  student: number | User
+  course: number | Course
   /**
    * Source order (optional for free / manual enrollments)
    */
-  order?: (number | null) | Order;
+  order?: (number | null) | Order
   /**
    * Completion percentage (0–100)
    */
-  progress: number;
-  completed?: boolean | null;
-  completedAt?: string | null;
+  progress: number
+  completed?: boolean | null
+  completedAt?: string | null
   /**
    * Last lesson the student accessed (resume playback)
    */
-  lastLesson?: (number | null) | Lesson;
-  updatedAt: string;
-  createdAt: string;
+  lastLesson?: (number | null) | Lesson
+  updatedAt: string
+  createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "reviews".
  */
 export interface Review {
-  id: number;
-  student: number | User;
-  course: number | Course;
-  rating: number;
-  review: string;
+  id: number
+  student: number | User
+  course: number | Course
+  rating: number
+  review: string
   /**
    * Only approved reviews should be shown publicly
    */
-  approved?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
+  approved?: boolean | null
+  updatedAt: string
+  createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "coupons".
  */
 export interface Coupon {
-  id: number;
+  id: number
   /**
    * Coupon code students enter at checkout
    */
-  code: string;
-  type: 'percentage' | 'fixed';
+  code: string
+  type: 'percentage' | 'fixed'
   /**
    * Percentage (0–100) or fixed currency amount
    */
-  discount: number;
+  discount: number
   /**
    * Leave empty for unlimited uses
    */
-  maxUses?: number | null;
+  maxUses?: number | null
   /**
    * Incremented by checkout logic — do not edit manually
    */
-  usedCount: number;
-  expiresAt?: string | null;
-  active?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
+  usedCount: number
+  expiresAt?: string | null
+  active?: boolean | null
+  updatedAt: string
+  createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
-  id: number;
-  key: string;
+  id: number
+  key: string
   data:
     | {
-        [k: string]: unknown;
+        [k: string]: unknown
       }
     | unknown[]
     | string
     | number
     | boolean
-    | null;
+    | null
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: number;
+  id: number
   document?:
     | ({
-        relationTo: 'users';
-        value: number | User;
+        relationTo: 'users'
+        value: number | User
       } | null)
     | ({
-        relationTo: 'media';
-        value: number | Media;
+        relationTo: 'media'
+        value: number | Media
       } | null)
     | ({
-        relationTo: 'categories';
-        value: number | Category;
+        relationTo: 'categories'
+        value: number | Category
       } | null)
     | ({
-        relationTo: 'courses';
-        value: number | Course;
+        relationTo: 'courses'
+        value: number | Course
       } | null)
     | ({
-        relationTo: 'sections';
-        value: number | Section;
+        relationTo: 'sections'
+        value: number | Section
       } | null)
     | ({
-        relationTo: 'lessons';
-        value: number | Lesson;
+        relationTo: 'lessons'
+        value: number | Lesson
       } | null)
     | ({
-        relationTo: 'blogs';
-        value: number | Blog;
+        relationTo: 'blogs'
+        value: number | Blog
       } | null)
     | ({
-        relationTo: 'pdfs';
-        value: number | Pdf;
+        relationTo: 'pdfs'
+        value: number | Pdf
       } | null)
     | ({
-        relationTo: 'orders';
-        value: number | Order;
+        relationTo: 'orders'
+        value: number | Order
       } | null)
     | ({
-        relationTo: 'enrollments';
-        value: number | Enrollment;
+        relationTo: 'enrollments'
+        value: number | Enrollment
       } | null)
     | ({
-        relationTo: 'reviews';
-        value: number | Review;
+        relationTo: 'reviews'
+        value: number | Review
       } | null)
     | ({
-        relationTo: 'coupons';
-        value: number | Coupon;
-      } | null);
-  globalSlug?: string | null;
+        relationTo: 'coupons'
+        value: number | Coupon
+      } | null)
+  globalSlug?: string | null
   user: {
-    relationTo: 'users';
-    value: number | User;
-  };
-  updatedAt: string;
-  createdAt: string;
+    relationTo: 'users'
+    value: number | User
+  }
+  updatedAt: string
+  createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: number;
+  id: number
   user: {
-    relationTo: 'users';
-    value: number | User;
-  };
-  key?: string | null;
+    relationTo: 'users'
+    value: number | User
+  }
+  key?: string | null
   value?:
     | {
-        [k: string]: unknown;
+        [k: string]: unknown
       }
     | unknown[]
     | string
     | number
     | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
+    | null
+  updatedAt: string
+  createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: number;
-  name?: string | null;
-  batch?: number | null;
-  updatedAt: string;
-  createdAt: string;
+  id: number
+  name?: string | null
+  batch?: number | null
+  updatedAt: string
+  createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
-  name?: T;
-  role?: T;
-  phone?: T;
-  avatar?: T;
-  bio?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  email?: T;
-  resetPasswordToken?: T;
-  resetPasswordExpiration?: T;
-  salt?: T;
-  hash?: T;
-  loginAttempts?: T;
-  lockUntil?: T;
+  name?: T
+  role?: T
+  phone?: T
+  avatar?: T
+  bio?: T
+  updatedAt?: T
+  createdAt?: T
+  email?: T
+  resetPasswordToken?: T
+  resetPasswordExpiration?: T
+  salt?: T
+  hash?: T
+  loginAttempts?: T
+  lockUntil?: T
   sessions?:
     | T
     | {
-        id?: T;
-        createdAt?: T;
-        expiresAt?: T;
-      };
+        id?: T
+        createdAt?: T
+        expiresAt?: T
+      }
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
-  alt?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  url?: T;
-  thumbnailURL?: T;
-  filename?: T;
-  mimeType?: T;
-  filesize?: T;
-  width?: T;
-  height?: T;
-  focalX?: T;
-  focalY?: T;
+  alt?: T
+  updatedAt?: T
+  createdAt?: T
+  url?: T
+  thumbnailURL?: T
+  filename?: T
+  mimeType?: T
+  filesize?: T
+  width?: T
+  height?: T
+  focalX?: T
+  focalY?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories_select".
  */
 export interface CategoriesSelect<T extends boolean = true> {
-  name?: T;
-  slug?: T;
-  description?: T;
-  icon?: T;
-  banner?: T;
-  isActive?: T;
-  updatedAt?: T;
-  createdAt?: T;
+  name?: T
+  slug?: T
+  description?: T
+  icon?: T
+  banner?: T
+  isActive?: T
+  updatedAt?: T
+  createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "courses_select".
  */
 export interface CoursesSelect<T extends boolean = true> {
-  title?: T;
-  slug?: T;
-  shortDescription?: T;
-  description?: T;
-  thumbnail?: T;
-  price?: T;
-  status?: T;
-  teacher?: T;
-  category?: T;
-  updatedAt?: T;
-  createdAt?: T;
+  title?: T
+  slug?: T
+  shortDescription?: T
+  description?: T
+  thumbnail?: T
+  price?: T
+  status?: T
+  teacher?: T
+  category?: T
+  updatedAt?: T
+  createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "sections_select".
  */
 export interface SectionsSelect<T extends boolean = true> {
-  title?: T;
-  course?: T;
-  order?: T;
-  updatedAt?: T;
-  createdAt?: T;
+  title?: T
+  course?: T
+  order?: T
+  updatedAt?: T
+  createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "lessons_select".
  */
 export interface LessonsSelect<T extends boolean = true> {
-  title?: T;
-  slug?: T;
-  section?: T;
-  description?: T;
-  video?: T;
-  attachments?: T;
-  duration?: T;
-  isPreview?: T;
-  order?: T;
-  updatedAt?: T;
-  createdAt?: T;
+  title?: T
+  slug?: T
+  section?: T
+  description?: T
+  video?: T
+  attachments?: T
+  duration?: T
+  isPreview?: T
+  order?: T
+  updatedAt?: T
+  createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "blogs_select".
  */
 export interface BlogsSelect<T extends boolean = true> {
-  title?: T;
-  slug?: T;
-  excerpt?: T;
-  content?: T;
-  coverImage?: T;
-  author?: T;
-  categories?: T;
-  publishedAt?: T;
-  status?: T;
-  updatedAt?: T;
-  createdAt?: T;
+  title?: T
+  slug?: T
+  excerpt?: T
+  content?: T
+  coverImage?: T
+  author?: T
+  categories?: T
+  publishedAt?: T
+  status?: T
+  updatedAt?: T
+  createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pdfs_select".
  */
 export interface PdfsSelect<T extends boolean = true> {
-  title?: T;
-  slug?: T;
-  description?: T;
-  coverImage?: T;
-  pdfFile?: T;
-  teacher?: T;
-  categories?: T;
-  price?: T;
-  status?: T;
-  updatedAt?: T;
-  createdAt?: T;
+  title?: T
+  slug?: T
+  description?: T
+  coverImage?: T
+  pdfFile?: T
+  teacher?: T
+  categories?: T
+  price?: T
+  status?: T
+  updatedAt?: T
+  createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "orders_select".
  */
 export interface OrdersSelect<T extends boolean = true> {
-  student?: T;
+  student?: T
   items?:
     | T
     | {
-        product?: T;
-        price?: T;
-        id?: T;
-      };
-  totalAmount?: T;
-  paymentMethod?: T;
-  paymentId?: T;
-  paymentStatus?: T;
-  orderStatus?: T;
-  purchasedAt?: T;
-  updatedAt?: T;
-  createdAt?: T;
+        product?: T
+        price?: T
+        id?: T
+      }
+  totalAmount?: T
+  paymentMethod?: T
+  paymentId?: T
+  paymentStatus?: T
+  orderStatus?: T
+  purchasedAt?: T
+  updatedAt?: T
+  createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "enrollments_select".
  */
 export interface EnrollmentsSelect<T extends boolean = true> {
-  student?: T;
-  course?: T;
-  order?: T;
-  progress?: T;
-  completed?: T;
-  completedAt?: T;
-  lastLesson?: T;
-  updatedAt?: T;
-  createdAt?: T;
+  student?: T
+  course?: T
+  order?: T
+  progress?: T
+  completed?: T
+  completedAt?: T
+  lastLesson?: T
+  updatedAt?: T
+  createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "reviews_select".
  */
 export interface ReviewsSelect<T extends boolean = true> {
-  student?: T;
-  course?: T;
-  rating?: T;
-  review?: T;
-  approved?: T;
-  updatedAt?: T;
-  createdAt?: T;
+  student?: T
+  course?: T
+  rating?: T
+  review?: T
+  approved?: T
+  updatedAt?: T
+  createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "coupons_select".
  */
 export interface CouponsSelect<T extends boolean = true> {
-  code?: T;
-  type?: T;
-  discount?: T;
-  maxUses?: T;
-  usedCount?: T;
-  expiresAt?: T;
-  active?: T;
-  updatedAt?: T;
-  createdAt?: T;
+  code?: T
+  type?: T
+  discount?: T
+  maxUses?: T
+  usedCount?: T
+  expiresAt?: T
+  active?: T
+  updatedAt?: T
+  createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
-  key?: T;
-  data?: T;
+  key?: T
+  data?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
-  document?: T;
-  globalSlug?: T;
-  user?: T;
-  updatedAt?: T;
-  createdAt?: T;
+  document?: T
+  globalSlug?: T
+  user?: T
+  updatedAt?: T
+  createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences_select".
  */
 export interface PayloadPreferencesSelect<T extends boolean = true> {
-  user?: T;
-  key?: T;
-  value?: T;
-  updatedAt?: T;
-  createdAt?: T;
+  user?: T
+  key?: T
+  value?: T
+  updatedAt?: T
+  createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-migrations_select".
  */
 export interface PayloadMigrationsSelect<T extends boolean = true> {
-  name?: T;
-  batch?: T;
-  updatedAt?: T;
-  createdAt?: T;
+  name?: T
+  batch?: T
+  updatedAt?: T
+  createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -836,18 +837,17 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface CollectionsWidget {
   data?: {
-    [k: string]: unknown;
-  };
-  width: 'full';
+    [k: string]: unknown
+  }
+  width: 'full'
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "auth".
  */
 export interface Auth {
-  [k: string]: unknown;
+  [k: string]: unknown
 }
-
 
 declare module 'payload' {
   export interface GeneratedTypes extends Config {}

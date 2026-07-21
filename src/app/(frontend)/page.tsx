@@ -1,9 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
-
 import { buttonVariants } from '@/components/ui/button'
-import { Separator } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'
+import MyCourses from '@/components/dashboard/my-courses'
 
 export default function HomePage() {
   return (
@@ -48,27 +47,7 @@ export default function HomePage() {
           />
         </div>
       </section>
-
-      <section id="courses" className="px-5 py-20">
-        <div className="mx-auto max-w-xl text-center">
-          <h2 className="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Courses made for real progress
-          </h2>
-          <p className="mt-3 text-muted-foreground">
-            From fundamentals to advanced workshops — structured lessons, teacher support, and clear
-            outcomes you can apply immediately.
-          </p>
-          <Link
-            href="/admin"
-            className={cn(buttonVariants({ size: 'lg' }), 'mt-6 inline-flex h-11 px-5')}
-          >
-            Explore the catalog
-          </Link>
-        </div>
-      </section>
-
-      <Separator />
-
+      <MyCourses />
       <section id="about" className="bg-linear-to-b from-accent/60 to-background px-5 py-20">
         <div className="mx-auto max-w-xl text-center">
           <h2 className="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
