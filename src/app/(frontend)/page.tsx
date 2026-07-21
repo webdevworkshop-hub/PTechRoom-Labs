@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import MyCourses from '@/components/dashboard/my-courses'
+import Teachers from '@/components/dashboard/teachers'
 
 export default function HomePage() {
   return (
@@ -48,17 +49,7 @@ export default function HomePage() {
         </div>
       </section>
       <MyCourses />
-      <section id="about" className="bg-linear-to-b from-accent/60 to-background px-5 py-20">
-        <div className="mx-auto max-w-xl text-center">
-          <h2 className="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Built for teachers and learners
-          </h2>
-          <p className="mt-3 text-muted-foreground">
-            PTechRoom Labs helps educators publish paid courses and PDFs, while students track
-            progress and learn at their own pace.
-          </p>
-        </div>
-      </section>
+      <Teachers />
 
       <section id="contact" className="px-5 py-20">
         <div className="mx-auto max-w-xl text-center">

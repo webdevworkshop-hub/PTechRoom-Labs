@@ -7,7 +7,6 @@ import { cn } from '@/lib/utils'
 import type { FeaturedCourse } from './featured-courses-data'
 import { Badge } from '@/components/ui/badge'
 
-
 function getInitials(name: string) {
   return name
     .split(' ')
