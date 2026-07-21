@@ -4,6 +4,7 @@ import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import MyCourses from '@/components/dashboard/my-courses'
 import Teachers from '@/components/dashboard/teachers'
+import FAQ from '@/components/dashboard/faq'
 
 export default function HomePage() {
   return (
@@ -50,7 +51,7 @@ export default function HomePage() {
       </section>
       <MyCourses />
       <Teachers />
-
+      <FAQ />
       <section id="contact" className="px-5 py-20">
         <div className="mx-auto max-w-xl text-center">
           <h2 className="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
