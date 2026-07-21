@@ -37,7 +37,9 @@ export default function FAQ() {
         >
           {faqItems.map((item) => (
             <AccordionItem key={item.id} value={item.id}>
-              <AccordionTrigger className="py-4 hover:no-underline">{item.question}</AccordionTrigger>
+              <AccordionTrigger className="py-4 hover:no-underline">
+                {item.question}
+              </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">{item.answer}</AccordionContent>
             </AccordionItem>
           ))}

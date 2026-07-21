@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 import MyCourses from '@/components/dashboard/my-courses'
 import Teachers from '@/components/dashboard/teachers'
 import FAQ from '@/components/dashboard/faq'
+import Footer from '@/components/footer'
 
 export default function HomePage() {
   return (
@@ -69,9 +70,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <footer className="border-t border-primary/15 px-5 py-8 text-center text-sm text-muted-foreground">
-        <p>© {new Date().getFullYear()} PTechRoom Labs</p>
-      </footer>
+      <Footer />
     </>
   )
 }
