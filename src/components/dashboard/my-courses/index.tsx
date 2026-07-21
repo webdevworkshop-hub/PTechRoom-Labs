@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ArrowRightIcon, SparklesIcon } from 'lucide-react'
 
-import { Button, buttonVariants } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 
 import { featuredCourses } from './featured-courses-data'
 import { FeaturedCourseCard } from './featured-course-card'
